@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scapy-job-deployment
+  namespace: default
+  labels:
+    app: scapy-job
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scapy-job
+  template:
+    metadata:
+      labels:
+        app: scapy-job
+    spec:
+      containers:
+      - name: scapy-job
+        image: absarhussain/scapyjob:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scapy-job-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: scapy-job
+  ports:
+  - port: 80
+    targetPort: 80

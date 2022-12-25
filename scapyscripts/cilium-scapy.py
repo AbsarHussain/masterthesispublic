@@ -1,5 +1,5 @@
 from scapy.all import * 
-A = '192.111.111.101' # spoofed source IP address 
+A = '192.111.101.101' # spoofed source IP address 
 B = 'DST_IP_OF_FLASK_SCAPY_DEPLOYMENT' # destination IP address 
 C = 80 # source port 
 D = 7000 # destination port \
